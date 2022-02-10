@@ -2,7 +2,8 @@
 @import "./Components/Header/Header.css";
 @import "./containers/Home-page/Home.css";
 @import "./containers/Offer-page/Offer.css";
-
+@import "./containers/SignUp/SignUp.css";
+@import "./containers/Login/Login.css";
 body {
   background-color: white;
   /* background-color: rgb(18, 117, 112); */

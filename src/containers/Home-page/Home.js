@@ -5,14 +5,15 @@ import axios from "axios";
 import LoadingPage from "../../Components/Loading-page/Loading-page";
 import Header from "../../Components/Header/Header";
 import homePicture from "../../images/home-picture.jpg";
+import anonymous from "../../images/anonymous.png";
 
-function Home() {
+function Home({ authToken }) {
   const [data, setData] = useState({});
   const [isLoading, setIsLoading] = useState(true);
 
   const fetchData = async () => {
     const response = await axios.get(
-      "https://lereacteur-vinted-api.herokuapp.com/offers"
+      "https://ryan-minted.herokuapp.com/offers"
     );
     setData(response.data);
     console.log(response.data);
@@ -34,8 +35,6 @@ function Home() {
         </div>
       ) : (
         <div className="Home-page">
-          <Header />
-
           <div className="Home">
             <div className="flottant">
               <h2>Prêts à faire du tri dans vos placards ?</h2>
@@ -54,20 +53,23 @@ function Home() {
             </div>
           </div>
           <div className="box-announce">
-            {data.offers.map((elem) => {
+            {data.offers.map((elem, index) => {
+              // console.log("id : ", elem._id);
               return (
-                <div key={elem._id} className="announce">
+                <Link
+                  to={`/offer/${elem._id}`}
+                  // to={elem._id}
+                  // to="offer"
+                  key={elem._id}
+                  className="announce"
+                >
                   <div className="announce-user">
-                    <div
-                      className={
-                        elem.owner.account.avatar ? "announce-user-img" : ""
-                      }
-                    >
+                    <div className={"announce-user-img"}>
                       <img
                         src={
                           elem.owner.account.avatar
                             ? elem.owner.account.avatar.secure_url
-                            : ""
+                            : anonymous
                         }
                       />
                     </div>
@@ -89,13 +91,10 @@ function Home() {
                       })}
                     </div>
                   </div>
-                </div>
+                </Link>
               );
             })}
           </div>
-          <Link to="/offer">
-            <div className="t">aller sur la page offrir</div>
-          </Link>
         </div>
       )}
     </div>

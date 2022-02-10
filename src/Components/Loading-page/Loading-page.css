@@ -2,10 +2,15 @@
 
 .Loading {
   display: flex;
+  position: fixed;
+  /* right: 0px; */
+  z-index: 10;
+  width: 100%;
+  top: 0px;
   align-items: center;
   justify-content: center;
   /* background-color: lawngreen; */
-  /* background-color: white; */
+  background-color: white;
   text-align: center;
   flex-direction: column;
   /* background: linear-gradient(141deg, #ccc 25%, #eee 40%, #ddd 55%); */
