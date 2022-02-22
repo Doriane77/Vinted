@@ -1,3 +1,6 @@
+.Home-page {
+  background-color: white;
+}
 .main-picture {
   /* background-color: violet; */
   width: 100%;
@@ -48,6 +51,11 @@
   border: #2baeb7 1px solid;
   border-radius: 5px;
 }
+.box-range {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
 .box-announce {
   display: flex;
   width: 78%;
@@ -55,13 +63,14 @@
   margin-top: 30px;
   justify-content: space-between;
   flex-wrap: wrap;
+  /* background-color: aqua; */
 }
 .announce {
   width: 235px;
   cursor: pointer;
   background-color: white;
   /* background-color: violet; */
-  margin-bottom: 40px;
+  margin-bottom: 30px;
   text-decoration: none;
 }
 .announce-user {

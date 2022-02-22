@@ -6,8 +6,10 @@
   display: flex;
   justify-content: space-around;
   /* align-items: center; */
-
-  width: 95%;
+  background-color: white;
+  border-radius: 20px;
+  padding: 20px;
+  width: 70%;
   margin: auto;
   margin-top: 30px;
   /* background-color: rebeccapurple; */
@@ -26,6 +28,7 @@
 .product-description {
   padding: 40px;
   max-width: 300px;
+  /* background-color: white; */
   /* background-color: lightcoral; */
 }
 .detail-col1 > h3 {

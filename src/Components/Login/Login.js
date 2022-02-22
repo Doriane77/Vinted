@@ -3,7 +3,7 @@ import React, { useState } from "react";
 import { useNavigate } from "react-router";
 import Header from "../../Components/Header/Header";
 
-function Login({ setauthToken, authToken }) {
+function Login({ setauthToken, authToken, setFloatConnect }) {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
 
@@ -21,21 +21,25 @@ function Login({ setauthToken, authToken }) {
     const value = event.target.value;
     setPassword(value);
   }
-  const handleSubmit = async (event) => {
-    event.preventDefault();
+  const handleSubmit = async () => {
+    // event.preventDefault();
+    setFloatConnect(false);
+    // window.location.reload();
+
     const data = { email: email, password: password };
     try {
       const response = await axios.post(
         "https://ryan-minted.herokuapp.com/user/login",
         data
       );
-      console.log(response);
       setauthToken(response.data.token);
-      console.log(authToken);
+      // navigate(`../my-user-account/${response.data.id}`);
+      // navigate("/");
     } catch (error) {
       console.log(error.response.data);
     }
   };
+
   return (
     <div className="Login">
       <div className="login-page">

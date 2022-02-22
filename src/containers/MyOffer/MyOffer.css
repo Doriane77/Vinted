@@ -1,0 +1,79 @@
+.my-offer-box {
+  padding: 20px;
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+.my-offer {
+  background-color: white;
+  position: relative;
+  /* background-color: lightgreen; */
+  margin-left: 15px;
+  margin-right: 15px;
+  margin-top: 40px;
+  width: 350px;
+  padding-top: 10px;
+  padding-bottom: 10px;
+  border-radius: 10px;
+}
+.my-offer > h2 {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 50px;
+  font-weight: bold;
+  /* background-color: rebeccapurple; */
+}
+.my-offer-img {
+  width: 350px;
+  height: 400px;
+}
+.my-offer-img > img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+.my-offer-price {
+  display: flex;
+  align-items: center;
+  font-weight: bold;
+  font-size: 20px;
+  height: 30px;
+}
+.my-offer-detail {
+  display: flex;
+  flex-direction: column;
+  height: 120px;
+  justify-content: center;
+}
+.my-offer-detail > div {
+  display: flex;
+  /* justify-content: space-between; */
+}
+
+.my-offer-price,
+.my-offer-detail > div > h4 {
+  margin-left: 10px;
+  margin-right: 10px;
+  /* background-color: rebeccapurple; */
+}
+.my-offer-detail > div > h4 {
+  width: 150px;
+}
+.my-offer-description {
+  margin-top: 5px;
+}
+.my-offer-button-edit {
+  display: flex;
+  position: absolute;
+  top: -19px;
+  right: -19px;
+  align-items: center;
+  justify-content: center;
+  background-color: #09b1ba;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  color: white;
+  border: none;
+}

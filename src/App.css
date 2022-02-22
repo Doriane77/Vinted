@@ -2,12 +2,24 @@
 @import "./Components/Header/Header.css";
 @import "./containers/Home-page/Home.css";
 @import "./containers/Offer-page/Offer.css";
-@import "./containers/SignUp/SignUp.css";
-@import "./containers/Login/Login.css";
+@import "./Components/SignUp/SignUp.css";
+@import "./Components/Login/Login.css";
+@import "./containers/MyUserAccount/MyUserAccount.css";
+@import "./containers/MyOffer/MyOffer.css";
+@import "./containers/SellYourItems/SellYourItems.css";
+@import "./containers/UpdateUser/UpdateUser.css";
+@import "./containers/MyOfferUpdate/MyOfferUpdate.css";
 body {
-  background-color: white;
+  /* background-color: white; */
   /* background-color: rgb(18, 117, 112); */
   /* color: white; */
   /* width: 82%;
   margin: auto; */
+  /* background-color: lightgreen; */
+  background-color: #f5f6f7;
+
+  /* min-height: 100%; */
+}
+button:hover {
+  opacity: 0.6;
 }

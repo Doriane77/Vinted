@@ -13,7 +13,7 @@ function Offer(props) {
       `https://ryan-minted.herokuapp.com/offer/${id}`
     );
     setProduct(response.data);
-    console.log("offer data :", response.data);
+    // console.log("offer data :", response.data);
     setIsLoading(false);
   };
   useEffect(() => {

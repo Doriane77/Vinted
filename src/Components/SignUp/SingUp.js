@@ -3,12 +3,17 @@ import React, { useState } from "react";
 import { useNavigate } from "react-router";
 import Header from "../../Components/Header/Header";
 
-function SignUp() {
+function SignUp({ setFloatSingUp }) {
   const [userName, setUserName] = useState("");
   const [email, setEmail] = useState("");
   const [phone, setPhone] = useState("");
   const [password, setPassword] = useState("");
   const [picture, setPicture] = useState({});
+
+  let navigate = useNavigate();
+  function clickLogin() {
+    navigate("../login");
+  }
 
   function handleUserNameChange(event) {
     const value = event.target.value;
@@ -31,6 +36,8 @@ function SignUp() {
   }
   const handleSubmit = async (event) => {
     event.preventDefault();
+    setFloatSingUp(false);
+    // navigate("../my-user-account");
 
     const formData = new FormData();
 
@@ -39,7 +46,7 @@ function SignUp() {
     formData.append("username", userName);
     formData.append("phone", phone);
     formData.append("pictureup", picture);
-    console.log(formData);
+    // console.log(formData);
 
     try {
       const response = await axios.post(
@@ -51,10 +58,7 @@ function SignUp() {
       console.log(error.response.data);
     }
   };
-  let navigate = useNavigate();
-  function clickLogin() {
-    navigate("../login");
-  }
+
   return (
     <div className="SignUp">
       <div className="SignUp-page">

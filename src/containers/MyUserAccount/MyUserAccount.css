@@ -1,0 +1,103 @@
+.MyUserAccount {
+  background-color: #f5f6f7;
+  /* background-color: lightcoral; */
+  min-height: 100%;
+  padding-top: 40px;
+  padding-bottom: 40px;
+}
+.MyUserAccount-page {
+  display: flex;
+  position: relative;
+  margin: auto;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  /* border: 2px solid #09b1ba; */
+  border-radius: 10px;
+  padding: 40px 0px;
+  background-color: white;
+  /* margin-top: 80px; */
+  width: 700px;
+  /* background-color: lightblue; */
+  /* margin: 60px;
+  padding: 40px; */
+}
+.edit-profile {
+  position: absolute;
+  background-color: #09b1ba;
+  border: none;
+  color: white;
+  border-radius: 50%;
+  width: 40px;
+  height: 40px;
+  top: -20px;
+  right: -20px;
+}
+
+.MyUserAccount-page > h1 {
+  font-size: 30px;
+  font-weight: bold;
+  margin-bottom: 40px;
+}
+.MyUserAccount-page > div {
+  display: flex;
+  align-items: center;
+}
+.profile-img {
+  width: 200px;
+  height: 200px;
+  margin-right: 70px;
+}
+.profile-img > img {
+  width: 100%;
+  height: 100%;
+  border-radius: 50%;
+  object-fit: cover;
+}
+.profile-description {
+  width: 300px;
+  height: 130px;
+  display: flex;
+  /* padding: 30px; */
+  /* background-color: lightcoral; */
+  flex-direction: column;
+  justify-content: space-between;
+}
+.profile-description > h2,
+.profile-description > p {
+  font-size: 25px;
+  /* background-color: rebeccapurple; */
+  font-weight: 400;
+}
+.profile-my-offer {
+  height: 40px;
+  width: 150px;
+  border: none;
+  border-radius: 5px;
+  margin-top: 50px;
+  background-color: #09b1ba;
+  color: white;
+}
+@media all and (min-width: 0px) and (max-width: 960px) {
+  .MyUserAccount-page {
+    display: flex;
+    margin: auto;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    border-radius: 10px;
+    width: 90%;
+    /* background-color: lightblue; */
+  }
+  .MyUserAccount-page > div {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+  .profile-img {
+    width: 200px;
+    height: 200px;
+    margin-right: 0px;
+    margin-bottom: 40px;
+  }
+}

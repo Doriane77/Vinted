@@ -1,16 +1,46 @@
 .Header {
+  position: relative;
   display: flex;
   background-color: white;
   /* background-color: yellowgreen; */
   align-items: center;
   height: 65px;
   justify-content: space-between;
-  padding-left: 9%;
-  padding-right: 9%;
+  padding-left: 5%;
+  padding-right: 5%;
+}
+.float-sign-up {
+  z-index: 10;
+  width: 440px;
+  height: 680px;
+  border-radius: 10px;
+  position: absolute;
+  top: 20%;
+  left: 50%;
+  margin-left: -220px;
+  margin-top: 3%;
+  background-color: white;
+  box-shadow: 1px 1px 1px 1px #e9e9e9;
+  /* background-color: lightpink;s */
+}
+.float-connect {
+  z-index: 10;
+  width: 420px;
+  height: 350px;
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  margin-left: -210px;
+  margin-top: 10%;
+  border-radius: 10px;
+  background-color: white;
+  box-shadow: 1px 1px 1px 1px #e9e9e9;
+  /* background-color: lightgreen; */
 }
 .search {
   display: flex;
   flex: 1;
+  /* width: 200px; */
   align-items: center;
   /* background-color: violet; */
 }
@@ -27,6 +57,7 @@
 .search > input {
   flex: 1;
   /* width: 600px; */
+  width: 180px;
   margin-right: 30px;
   height: 39px;
   border: none;
@@ -50,7 +81,9 @@ button:hover {
   object-fit: cover;
 }
 .box-button {
-  min-width: 423px;
+  display: flex;
+  justify-content: flex-end;
+  min-width: 313px;
   /* background-color: royalblue; */
 }
 .bars {
@@ -58,10 +91,17 @@ button:hover {
 }
 .header-button {
   display: flex;
-  justify-content: end;
+
+  justify-content: flex-end;
   /* background-color: rebeccapurple; */
 }
-
+/* .header-button > div {
+  display: flex;
+  background-color: pink;
+} */
+.header-profile-off {
+  display: none;
+}
 .register,
 .login,
 .sole,
@@ -93,6 +133,40 @@ button:hover {
 .button-float {
   display: none;
 }
+.header-profile {
+  display: flex;
+}
+.header-user-button {
+  display: flex;
+  align-items: center;
+  justify-content: end;
+  width: 100px;
+  height: 30px;
+  z-index: 9;
+  background-color: white;
+  border: none;
+  /* background-color: rebeccapurple; */
+  margin-left: 20px;
+}
+
+.header-user-button > h2 {
+  margin-right: 10px;
+  font-size: 20px;
+}
+.header-user-img {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 40px;
+  min-height: 40px;
+  /* background-color: rebeccapurple; */
+}
+.header-user-img > img {
+  min-width: 100%;
+  min-height: 100%;
+  border-radius: 50%;
+  object-fit: cover;
+}
 @media all and (min-width: 0px) and (max-width: 960px) {
   .Header {
     display: flex;
@@ -104,25 +178,43 @@ button:hover {
     padding-left: 2%;
     padding-right: 2%;
   }
-  .search {
-    display: none;
+  .logo-image {
+    min-width: 90px;
+    height: 35px;
+    margin-right: 10px;
+    /* background-color: rebeccapurple; */
+  }
+
+  .search > input {
+    margin-right: 5px;
+    width: 180px;
+    /* background-color: royalblue; */
   }
   .bars {
     display: inherit;
+    /* display: flex; */
+    align-items: center;
+    justify-content: center;
     border: none;
     background-color: white;
+    z-index: 10;
+    margin-left: 5px;
+    /* margin-right: 5px; */
+    /* background-color: red; */
   }
   .box-button {
     /* background-color: red; */
     min-width: 0px;
+    justify-content: end;
   }
   .button-float {
+    z-index: 10;
     display: flex;
     flex-direction: column;
     /* justify-content: space-between; */
     align-items: center;
     position: absolute;
-    top: 50px;
+    top: 60px;
     right: 5px;
     width: 150px;
     padding: 20px;

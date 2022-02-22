@@ -3,7 +3,7 @@
   /* background-color: lightcoral; */
   width: 400px;
   margin: auto;
-  margin-bottom: 40px;
+  margin-bottom: 20px;
   /* margin-top: 20px; */
 }
 .SignUp-page > h1,
@@ -14,12 +14,12 @@
   align-items: center;
   font-size: 40px;
   height: 40px;
-  margin-top: 30px;
+  margin-top: 20px;
 }
 .SignUp-page > form > input,
 .login-page > form > input {
   min-width: 100%;
-  height: 70px;
+  height: 60px;
   border: none;
   margin-top: 10px;
   padding-top: 20px;
@@ -44,8 +44,9 @@
   display: flex;
   align-items: center;
   /* height: 40px; */
-  margin-top: 40px;
+  margin-top: 20px;
   margin-bottom: 20px;
+  /* background-color: red; */
 }
 .sign-up-form > div > div > h2 {
   font-size: 24px;
@@ -72,8 +73,8 @@
   border: none;
   color: white;
   font-size: 25px;
-  margin-top: 40px;
-  margin-bottom: 30px;
+  margin-top: 20px;
+  margin-bottom: 20px;
 }
 .sign-up-racourci,
 .login-racourci {

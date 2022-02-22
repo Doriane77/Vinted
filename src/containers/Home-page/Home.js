@@ -1,22 +1,27 @@
 import React from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { useState, useEffect } from "react";
 import axios from "axios";
 import LoadingPage from "../../Components/Loading-page/Loading-page";
 import Header from "../../Components/Header/Header";
 import homePicture from "../../images/home-picture.jpg";
 import anonymous from "../../images/anonymous.png";
+import OfferLimit from "../../Components/Offer-Limit/Offer-Limit";
 
-function Home({ authToken }) {
+function Home({ search, authToken, user, floatConnect, setFloatConnect }) {
+  const [sale, setSale] = useState();
   const [data, setData] = useState({});
   const [isLoading, setIsLoading] = useState(true);
+  const [limit, setLimit] = useState(50);
+  const [page, setPage] = useState(1);
+  const [priceMin, setPriceMin] = useState(0);
+  const [priceMax, setPriceMax] = useState(1000);
 
   const fetchData = async () => {
     const response = await axios.get(
-      "https://ryan-minted.herokuapp.com/offers"
+      `https://ryan-minted.herokuapp.com/offers?page=${page}&limit=${limit}&title=${search}`
     );
     setData(response.data);
-    console.log(response.data);
     setIsLoading(false);
   };
   useEffect(() => {
@@ -25,8 +30,15 @@ function Home({ authToken }) {
     };
     // setTimeout(showSomething, 5000);
     showSomething();
-  }, []);
-
+  }, [page, limit, search]);
+  const navigate = useNavigate();
+  function handleSaleClik() {
+    if (authToken) {
+      navigate(`../my-user-account/${user._id}/vend-un-article`);
+    } else {
+      setFloatConnect(!floatConnect);
+    }
+  }
   return (
     <div className="App">
       {isLoading ? (
@@ -38,7 +50,7 @@ function Home({ authToken }) {
           <div className="Home">
             <div className="flottant">
               <h2>Prêts à faire du tri dans vos placards ?</h2>
-              <button>Commencer à vendre</button>
+              <button onClick={handleSaleClik}>Commencer à vendre</button>
             </div>
             <div className="box-main-picture">
               <div className="main-picture">
@@ -52,14 +64,23 @@ function Home({ authToken }) {
               </div>
             </div>
           </div>
+          <OfferLimit
+            {...data}
+            limit={limit}
+            setLimit={setLimit}
+            page={page}
+            setPage={setPage}
+          />
+          <div className="box-range">
+            <p>min {priceMin}</p>
+            <input type="range" min="0" max="1000" />
+            <p>max {priceMax}</p>
+          </div>
           <div className="box-announce">
             {data.offers.map((elem, index) => {
-              // console.log("id : ", elem._id);
               return (
                 <Link
                   to={`/offer/${elem._id}`}
-                  // to={elem._id}
-                  // to="offer"
                   key={elem._id}
                   className="announce"
                 >
@@ -95,6 +116,13 @@ function Home({ authToken }) {
               );
             })}
           </div>
+          <OfferLimit
+            {...data}
+            limit={limit}
+            setLimit={setLimit}
+            page={page}
+            setPage={setPage}
+          />
         </div>
       )}
     </div>
