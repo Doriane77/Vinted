@@ -1,17 +1,23 @@
 import axios from "axios";
 import React, { useState } from "react";
-import { useNavigate } from "react-router";
-import Header from "../../Components/Header/Header";
+// import { useNavigate } from "react-router";
+import { toast } from "react-toastify";
 
-function Login({ setauthToken, authToken, setFloatConnect }) {
+function Login({
+  setauthToken,
+  authToken,
+  setFloatConnect,
+  floatSignUp,
+  setFloatSignUp,
+}) {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
 
-  let navigate = useNavigate();
+  // let navigate = useNavigate();
   function clickSignUp() {
-    navigate("../sign-up");
+    setFloatSignUp(true);
+    setFloatConnect(false);
   }
-
   function handleEmailChange(event) {
     const value = event.target.value;
     setEmail(value);
@@ -21,9 +27,9 @@ function Login({ setauthToken, authToken, setFloatConnect }) {
     const value = event.target.value;
     setPassword(value);
   }
-  const handleSubmit = async () => {
-    // event.preventDefault();
-    setFloatConnect(false);
+  const handleSubmit = async (event) => {
+    event.preventDefault();
+
     // window.location.reload();
 
     const data = { email: email, password: password };
@@ -33,9 +39,36 @@ function Login({ setauthToken, authToken, setFloatConnect }) {
         data
       );
       setauthToken(response.data.token);
+      toast.success("Connection", {
+        position: "top-center",
+        autoClose: 2000,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
+      });
+      setFloatConnect(false);
+      window.location.reload();
+
+      //  toast.warning("")
+      // toast.info("");
+      // toast.error("");
+      // toast.default("");
+
       // navigate(`../my-user-account/${response.data.id}`);
       // navigate("/");
     } catch (error) {
+      toast.error("mot de passe ou adresse email erroner, veuillez réessayer", {
+        position: "top-center",
+        autoClose: 3000,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
+      });
+
       console.log(error.response.data);
     }
   };

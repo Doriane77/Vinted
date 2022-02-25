@@ -82,7 +82,7 @@ button:hover {
 }
 .box-button {
   display: flex;
-  justify-content: flex-end;
+  justify-content: space-around;
   min-width: 313px;
   /* background-color: royalblue; */
 }
@@ -92,7 +92,7 @@ button:hover {
 .header-button {
   display: flex;
 
-  justify-content: flex-end;
+  justify-content: space-around;
   /* background-color: rebeccapurple; */
 }
 /* .header-button > div {
@@ -139,7 +139,7 @@ button:hover {
 .header-user-button {
   display: flex;
   align-items: center;
-  justify-content: end;
+  justify-content: space-around;
   width: 100px;
   height: 30px;
   z-index: 9;
@@ -157,13 +157,13 @@ button:hover {
   display: flex;
   align-items: center;
   justify-content: center;
-  min-width: 40px;
-  min-height: 40px;
+  width: 40px;
+  height: 40px;
   /* background-color: rebeccapurple; */
 }
 .header-user-img > img {
-  min-width: 100%;
-  min-height: 100%;
+  width: 100%;
+  height: 100%;
   border-radius: 50%;
   object-fit: cover;
 }

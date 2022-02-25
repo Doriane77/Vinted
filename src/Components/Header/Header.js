@@ -6,6 +6,7 @@ import { useState } from "react";
 import axios from "axios";
 import Login from "../../Components/Login/Login";
 import SignUp from "../../Components/SignUp/SingUp";
+import { toast } from "react-toastify";
 
 function Header({
   authToken,
@@ -14,29 +15,44 @@ function Header({
   setSearch,
   floatConnect,
   setFloatConnect,
+  floatSignUp,
+  setFloatSignUp,
 }) {
   const [float, setFloat] = useState(false);
   // const [floatConnect, setFloatConnect] = useState(false);
-  const [floatSignUp, setFloatSingUp] = useState(false);
+  // const [floatSignUp, setFloatSignUp] = useState(false);
 
   let navigate = useNavigate();
   function handleClickSignUp() {
     // navigate("../sign-up");
-    setFloatSingUp(!floatSignUp);
+    setFloatSignUp(!floatSignUp);
     setFloatConnect(false);
   }
   function handleClickLogin() {
     // navigate("../login");
     // fetchData();
 
-    setFloatSingUp(false);
+    setFloatSignUp(false);
     setFloatConnect(!floatConnect);
   }
   function handleClikSignOut() {
     setauthToken("");
     Cookies.remove("token");
-    navigate("/");
-    window.location.reload();
+
+    toast.info("Deconnection", {
+      position: "top-center",
+      autoClose: 3000,
+      hideProgressBar: false,
+      closeOnClick: true,
+      pauseOnHover: true,
+      draggable: true,
+      progress: undefined,
+    });
+    const afterDisconnect = () => {
+      navigate("/");
+      window.location.reload();
+    };
+    setTimeout(afterDisconnect, 1000);
   }
   function handleProfileClik() {
     navigate(`../my-user-account/${data.user._id}`);
@@ -56,26 +72,26 @@ function Header({
   const [data, setData] = useState({});
   const [isLoading, setIsLoading] = useState(true);
 
-  const fetchData = async () => {
-    if (authToken) {
-      try {
-        const response = await axios.post(
-          `https://ryan-minted.herokuapp.com/user/profile`,
-          {},
-          {
-            headers: { Authorization: `Bearer ${authToken}` },
-          }
-        );
-        setData(response.data);
-        setIsLoading(false);
-      } catch (error) {
-        console.log(error.response);
-      }
-    }
-  };
   useEffect(() => {
+    const fetchData = async () => {
+      if (authToken) {
+        try {
+          const response = await axios.post(
+            `https://ryan-minted.herokuapp.com/user/profile`,
+            {},
+            {
+              headers: { Authorization: `Bearer ${authToken}` },
+            }
+          );
+          setData(response.data);
+          setIsLoading(false);
+        } catch (error) {
+          console.log(error.response);
+        }
+      }
+    };
     fetchData();
-  }, []);
+  }, [authToken]);
   return (
     <div className="Header">
       <Link to="/">
@@ -87,7 +103,9 @@ function Header({
         <SignUp
           authToken={authToken}
           setauthToken={setauthToken}
-          setFloatSingUp={setFloatSingUp}
+          floatConnect={floatConnect}
+          setFloatConnect={setFloatConnect}
+          setFloatSignUp={setFloatSignUp}
         />
       </div>
       <div className={floatConnect ? "float-connect" : "none"}>
@@ -96,6 +114,8 @@ function Header({
           setauthToken={setauthToken}
           floatConnect={floatConnect}
           setFloatConnect={setFloatConnect}
+          floatSignUp={floatSignUp}
+          setFloatSignUp={setFloatSignUp}
         />
       </div>
       <div className="search">

@@ -1,8 +1,9 @@
 import axios from "axios";
 import React, { useEffect, useState } from "react";
 import { useNavigate } from "react-router";
+import { toast } from "react-toastify";
 
-function SellYourItems({ authToken }) {
+function SellYourItems({ authToken, user }) {
   const [title, setTitle] = useState("");
   const [picture, setPicture] = useState({});
   const [pictureURL, setPictureURL] = useState("");
@@ -18,7 +19,7 @@ function SellYourItems({ authToken }) {
 
   const handleSubmit = async (event) => {
     event.preventDefault();
-    navigate("./");
+    // navigate("./");
     console.log({
       title,
       description,
@@ -49,6 +50,20 @@ function SellYourItems({ authToken }) {
         }
       );
       console.log(response);
+      toast.success("Annonce créer", {
+        position: "top-center",
+        autoClose: 3000,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
+      });
+      const afterSubmit = () => {
+        navigate(`/my-user-account/${user._id}`);
+        window.location.reload();
+      };
+      setTimeout(afterSubmit, 1000);
     } catch (error) {
       console.log(error.response);
     }

@@ -1,8 +1,5 @@
 import "./App.css";
-import { library } from "@fortawesome/fontawesome-svg-core";
-import { faSearch, faBars, faEdit } from "@fortawesome/free-solid-svg-icons";
-library.add(faSearch, faBars, faEdit);
-import { BrowserRouter as Router, Routes, Route, Link } from "react-router-dom";
+import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import Home from "./containers/Home-page/Home";
 import Offer from "./containers/Offer-page/Offer";
 import Header from "./Components/Header/Header";
@@ -14,14 +11,21 @@ import SellYourItems from "./containers/SellYourItems/SellYourItems";
 import UserUpdate from "./containers/UpdateUser/UpdateUser";
 import MyOfferUpdate from "./containers/MyOfferUpdate/MyOfferUpdate";
 import axios from "axios";
+import { ToastContainer } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
+import { library } from "@fortawesome/fontawesome-svg-core";
+
+import { faSearch, faBars, faEdit } from "@fortawesome/free-solid-svg-icons";
+library.add(faSearch, faBars, faEdit);
 
 function App() {
   const [authToken, setauthToken] = useState(Cookies.get("token") || "");
   const [search, setSearch] = useState("");
   let kookie = Cookies.set("token", authToken, { expires: 7 });
   const [userData, setUserData] = useState({});
-  const [isLoading, setIsLoading] = useState(true);
+  // const [isLoading, setIsLoading] = useState(true);
   const [floatConnect, setFloatConnect] = useState(false);
+  const [floatSignUp, setFloatSignUp] = useState(false);
 
   const fetchData = async () => {
     if (authToken) {
@@ -34,7 +38,6 @@ function App() {
           }
         );
         setUserData(response.data);
-        setIsLoading(false);
       } catch (error) {
         console.log(error.response);
       }
@@ -42,9 +45,10 @@ function App() {
   };
   useEffect(() => {
     fetchData();
-  }, []);
+  }, [kookie]);
   return (
     <div>
+      <ToastContainer />
       <Router>
         <Header
           authToken={authToken}
@@ -54,6 +58,8 @@ function App() {
           setSearch={setSearch}
           floatConnect={floatConnect}
           setFloatConnect={setFloatConnect}
+          floatSignUp={floatSignUp}
+          setFloatSignUp={setFloatSignUp}
         />
         <Routes>
           <Route
@@ -84,7 +90,7 @@ function App() {
           </Route>
           <Route
             path="my-user-account/:id/vend-un-article"
-            element={<SellYourItems authToken={authToken} />}
+            element={<SellYourItems authToken={authToken} {...userData} />}
           />
           <Route
             path="my-user-account/:id/user-update"

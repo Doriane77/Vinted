@@ -1,18 +1,16 @@
 import axios from "axios";
 import React, { useState } from "react";
-import { useNavigate } from "react-router";
-import Header from "../../Components/Header/Header";
 
-function SignUp({ setFloatSingUp }) {
+function SignUp({ setFloatSignUp, floatConnect, setFloatConnect }) {
   const [userName, setUserName] = useState("");
   const [email, setEmail] = useState("");
   const [phone, setPhone] = useState("");
   const [password, setPassword] = useState("");
   const [picture, setPicture] = useState({});
 
-  let navigate = useNavigate();
   function clickLogin() {
-    navigate("../login");
+    setFloatSignUp(false);
+    setFloatConnect(true);
   }
 
   function handleUserNameChange(event) {
@@ -36,7 +34,7 @@ function SignUp({ setFloatSingUp }) {
   }
   const handleSubmit = async (event) => {
     event.preventDefault();
-    setFloatSingUp(false);
+    setFloatSignUp(false);
     // navigate("../my-user-account");
 
     const formData = new FormData();
