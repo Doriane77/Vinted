@@ -13,7 +13,6 @@ function Offer({
   product,
   setProduct,
 }) {
-  // const [product, setProduct] = useState({});
   const [isLoading, setIsLoading] = useState(true);
   const navigate = useNavigate();
   function handleBuyClik() {
@@ -28,7 +27,6 @@ function Offer({
       `${process.env.REACT_APP_API_URL}offer/${id}`
     );
     setProduct(response.data);
-    // console.log("offer data :", response.data);
     setIsLoading(false);
   };
   useEffect(() => {

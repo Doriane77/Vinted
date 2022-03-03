@@ -33,8 +33,6 @@ function MyUserAccount({ authToken }) {
   let navigate = useNavigate();
   function handleMyOfferClick() {
     setSeeOffer(!seeOffer);
-    // navigate(`/my-user-account/${id}/my-offer`);
-    // navigate("my-offer");
   }
   function handleEditProfileClik() {
     navigate(`/my-user-account/${data.user._id}/user-update`);

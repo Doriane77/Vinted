@@ -19,19 +19,13 @@ function Header({
   setFloatSignUp,
 }) {
   const [float, setFloat] = useState(false);
-  // const [floatConnect, setFloatConnect] = useState(false);
-  // const [floatSignUp, setFloatSignUp] = useState(false);
 
   let navigate = useNavigate();
   function handleClickSignUp() {
-    // navigate("../sign-up");
     setFloatSignUp(!floatSignUp);
     setFloatConnect(false);
   }
   function handleClickLogin() {
-    // navigate("../login");
-    // fetchData();
-
     setFloatSignUp(false);
     setFloatConnect(!floatConnect);
   }

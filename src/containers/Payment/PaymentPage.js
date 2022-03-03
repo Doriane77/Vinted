@@ -18,7 +18,6 @@ function PaymentPage({ authToken, product, setProduct }) {
   const [errorMessge, setErrorMessage] = useState("");
 
   const total = cost + buyerProtect + product.product_price;
-  // https://ryan-minted.herokuapp.com/payment
 
   const handleSubmit = async (event) => {
     event.preventDefault();

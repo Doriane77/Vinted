@@ -1,6 +1,5 @@
 import axios from "axios";
 import React, { useState } from "react";
-// import { useNavigate } from "react-router";
 import { toast } from "react-toastify";
 
 function Login({
@@ -13,7 +12,6 @@ function Login({
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
 
-  // let navigate = useNavigate();
   function clickSignUp() {
     setFloatSignUp(true);
     setFloatConnect(false);
@@ -29,8 +27,6 @@ function Login({
   }
   const handleSubmit = async (event) => {
     event.preventDefault();
-
-    // window.location.reload();
 
     const data = { email: email, password: password };
     try {
@@ -55,9 +51,6 @@ function Login({
       // toast.info("");
       // toast.error("");
       // toast.default("");
-
-      // navigate(`../my-user-account/${response.data.id}`);
-      // navigate("/");
     } catch (error) {
       toast.error("mot de passe ou adresse email erroner, veuillez réessayer", {
         position: "top-center",

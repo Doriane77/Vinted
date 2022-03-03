@@ -48,7 +48,6 @@ function OfferUpdate({ authToken }) {
     formData.append("condition", condition);
     formData.append("color", color);
     formData.append("city", city);
-    // formData.append("picture", picture);
     formData.append("id", id.id);
 
     try {
