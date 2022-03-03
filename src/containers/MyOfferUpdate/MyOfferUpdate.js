@@ -1,9 +1,10 @@
 import axios from "axios";
 import React, { useEffect, useState } from "react";
-import { Outlet, useNavigate, useParams } from "react-router";
+import { useNavigate, useParams } from "react-router";
+
 function OfferUpdate({ authToken }) {
   const id = useParams();
-  console.log(id.id);
+
   const [data, setData] = useState();
   const [title, setTitle] = useState("");
   const [description, setDescription] = useState("");
@@ -35,7 +36,7 @@ function OfferUpdate({ authToken }) {
   useEffect(() => {
     fetchData();
   }, []);
-  console.log(data);
+
   const handleSubmit = async (event) => {
     // event.preventDefault();
     nagivate(`/my-user-account/${data.user._id}`);
@@ -56,7 +57,6 @@ function OfferUpdate({ authToken }) {
         formData,
         { headers: { Authorization: `Bearer ${authToken}` } }
       );
-      console.log("response", response);
     } catch (error) {
       console.log(error.response);
     }
@@ -65,7 +65,7 @@ function OfferUpdate({ authToken }) {
     boxPicture.append("picture", picture);
     try {
       const response = await axios.post(
-        `https://ryan-minted.herokuapp.com/offer/picture-profile-change`,
+        `${process.env.REACT_APP_API_URL}offer/picture-profile-change`,
         boxPicture,
         { headers: { Authorization: `Bearer ${authToken}` } }
       );
@@ -178,10 +178,7 @@ function OfferUpdate({ authToken }) {
               <label>Nouvelle photo :</label>
               <input type="file" onChange={handlePictureChange} required />
             </div>
-            {/* <OfferPictureUpdate
-              handlePictureChange={handlePictureChange}
-              id={id}
-            /> */}
+
             <button type="submit" onClick={handleSubmit}>
               Valider
             </button>
