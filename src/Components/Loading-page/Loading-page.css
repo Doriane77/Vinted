@@ -39,21 +39,21 @@
                        ID/Class should've been used. 
                        For a small demo 
                        it's okaish for now */
-  animation: showup 7s infinite;
+  animation: showup 1s infinite;
 }
 
 .Loading > div:last-of-type {
   width: 0px;
   display: flex;
   justify-content: center;
-  animation: reveal 7s infinite;
+  animation: reveal 3s infinite;
   margin-top: 30px;
   /* background-color: peru; */
 }
 
 .Loading > div:last-of-type span {
   margin-left: -355px;
-  animation: slidein 7s infinite;
+  animation: slidein 2s infinite;
 }
 
 @keyframes showup {

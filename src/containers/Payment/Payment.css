@@ -1,0 +1,49 @@
+.PaymentPage {
+  margin: 40px;
+}
+.box-payment {
+  margin: auto;
+  width: 350px;
+  background-color: white;
+  padding: 20px;
+  border-radius: 10px;
+}
+.payment-info > h2 {
+  display: flex;
+  align-items: center;
+  height: 40px;
+  font-weight: bold;
+}
+.payment-info > div {
+  display: flex;
+  justify-content: space-between;
+  height: 25px;
+  color: gray;
+}
+.payment-total {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  height: 80px;
+}
+.card-box {
+  /* background-color: palevioletred; */
+  padding-top: 10px;
+  padding-left: 5px;
+  padding-bottom: 10px;
+  margin-bottom: 25px;
+  border: solid black 1px;
+}
+.box-payment > div > form > button {
+  margin: auto;
+  background-color: #6bced3;
+  display: flex;
+  width: 80%;
+  border-radius: 5px;
+  align-items: center;
+  justify-content: center;
+  color: white;
+  border: none;
+  height: 40px;
+  font-size: 20px;
+}

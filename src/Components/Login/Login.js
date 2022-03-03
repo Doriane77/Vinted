@@ -35,7 +35,7 @@ function Login({
     const data = { email: email, password: password };
     try {
       const response = await axios.post(
-        "https://ryan-minted.herokuapp.com/user/login",
+        `${process.env.REACT_APP_API_URL}user/login`,
         data
       );
       setauthToken(response.data.token);

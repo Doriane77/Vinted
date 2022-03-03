@@ -16,10 +16,6 @@ function LoadingPage() {
         </div>
         <p>Fait par LOLLIA DORIANE</p>
       </div>
-      {/* <img
-        src="https://www.vinted.fr/assets/seller-promotion/other/banner-tablets-up-afe3d19776592a72f165c1bb93fd02c5528250a8c670ecc1656654323f9d4856.jpg"
-        alt="picture clothe"
-      /> */}
     </div>
   );
 }

@@ -20,14 +20,13 @@ function OfferUpdate({ authToken }) {
   const fetchData = async () => {
     try {
       const response = await axios.post(
-        `https://ryan-minted.herokuapp.com/user/profile`,
+        `${process.env.REACT_APP_API_URL}profile`,
         {},
         {
           headers: { Authorization: `Bearer ${authToken}` },
         }
       );
       setData(response.data);
-      setIsLoading(false);
     } catch (error) {
       console.log(error.response);
     }
@@ -54,7 +53,7 @@ function OfferUpdate({ authToken }) {
 
     try {
       const response = await axios.post(
-        `https://ryan-minted.herokuapp.com/offer/update`,
+        `${process.env.REACT_APP_API_URL}offer/update`,
         formData,
         { headers: { Authorization: `Bearer ${authToken}` } }
       );

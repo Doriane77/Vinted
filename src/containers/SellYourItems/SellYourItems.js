@@ -43,7 +43,7 @@ function SellYourItems({ authToken, user }) {
     formData.append("picture", picture);
     try {
       const response = await axios.post(
-        `https://ryan-minted.herokuapp.com/offer/publish`,
+        `${process.env.REACT_APP_API_URL}offer/publish`,
         formData,
         {
           headers: { Authorization: `Bearer ${authToken}` },

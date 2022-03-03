@@ -9,16 +9,10 @@
 @import "./containers/SellYourItems/SellYourItems.css";
 @import "./containers/UpdateUser/UpdateUser.css";
 @import "./containers/MyOfferUpdate/MyOfferUpdate.css";
+@import "./containers/Payment/Payment.css";
 body {
-  /* background-color: white; */
-  /* background-color: rgb(18, 117, 112); */
-  /* color: white; */
-  /* width: 82%;
-  margin: auto; */
+  background-color: #f1efef;
   /* background-color: lightgreen; */
-  background-color: #f5f6f7;
-
-  /* min-height: 100%; */
 }
 button:hover {
   opacity: 0.6;

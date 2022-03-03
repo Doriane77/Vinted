@@ -10,7 +10,7 @@ function MyOffer({ authToken }) {
   const fetchData = async () => {
     try {
       const response = await axios.post(
-        `https://ryan-minted.herokuapp.com/user/profile`,
+        `${process.env.REACT_APP_API_URL}user/profile`,
         {},
         {
           headers: { Authorization: `Bearer ${authToken}` },

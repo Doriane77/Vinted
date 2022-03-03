@@ -2,15 +2,30 @@ import React, { useState, useEffect } from "react";
 import axios from "axios";
 import Header from "../../Components/Header/Header";
 import { useParams } from "react-router-dom";
+import { useNavigate } from "react-router";
+
 import anonymous from "../../images/anonymous.png";
 
-function Offer(props) {
-  const [product, setProduct] = useState({});
+function Offer({
+  authToken,
+  setFloatConnect,
+  floatConnect,
+  product,
+  setProduct,
+}) {
+  // const [product, setProduct] = useState({});
   const [isLoading, setIsLoading] = useState(true);
-
+  const navigate = useNavigate();
+  function handleBuyClik() {
+    if (authToken) {
+      navigate(`/offer/buy/${id}`);
+    } else {
+      setFloatConnect(!floatConnect);
+    }
+  }
   const fetchData = async () => {
     const response = await axios.get(
-      `https://ryan-minted.herokuapp.com/offer/${id}`
+      `${process.env.REACT_APP_API_URL}offer/${id}`
     );
     setProduct(response.data);
     // console.log("offer data :", response.data);
@@ -69,7 +84,7 @@ function Offer(props) {
                 </div>
               </div>
               <div>
-                <button>Acheter</button>
+                <button onClick={handleBuyClik}>Acheter</button>
               </div>
             </div>
           </div>

@@ -3,9 +3,7 @@ import { Link, useNavigate } from "react-router-dom";
 import { useState, useEffect } from "react";
 import axios from "axios";
 import LoadingPage from "../../Components/Loading-page/Loading-page";
-import Header from "../../Components/Header/Header";
 import homePicture from "../../images/home-picture.jpg";
-import anonymous from "../../images/anonymous.png";
 import OfferLimit from "../../Components/Offer-Limit/Offer-Limit";
 
 function Home({ search, authToken, user, floatConnect, setFloatConnect }) {
@@ -19,7 +17,7 @@ function Home({ search, authToken, user, floatConnect, setFloatConnect }) {
 
   const fetchData = async () => {
     const response = await axios.get(
-      `https://ryan-minted.herokuapp.com/offers?page=${page}&limit=${limit}&title=${search}`
+      `${process.env.REACT_APP_API_URL}offers?page=${page}&limit=${limit}&title=${search}`
     );
     setData(response.data);
     setIsLoading(false);
@@ -28,8 +26,8 @@ function Home({ search, authToken, user, floatConnect, setFloatConnect }) {
     const showSomething = () => {
       fetchData();
     };
-    // setTimeout(showSomething, 5000);
-    showSomething();
+    setTimeout(showSomething, 1000);
+    // showSomething();
   }, [page, limit, search]);
   const navigate = useNavigate();
   function handleSaleClik() {
@@ -78,6 +76,7 @@ function Home({ search, authToken, user, floatConnect, setFloatConnect }) {
           </div>
           <div className="box-announce">
             {data.offers.map((elem, index) => {
+              console.log(elem);
               return (
                 <Link
                   to={`/offer/${elem._id}`}
@@ -85,16 +84,7 @@ function Home({ search, authToken, user, floatConnect, setFloatConnect }) {
                   className="announce"
                 >
                   <div className="announce-user">
-                    <div className={"announce-user-img"}>
-                      <img
-                        src={
-                          elem.owner.account.avatar
-                            ? elem.owner.account.avatar.secure_url
-                            : anonymous
-                        }
-                      />
-                    </div>
-                    <h2>{elem.owner.account.username}</h2>
+                    <h2>{elem.product_name}</h2>
                   </div>
                   <div className="announce-img-product">
                     <img src={elem.product_image.url} alt={elem.product_name} />

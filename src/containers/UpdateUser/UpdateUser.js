@@ -18,7 +18,7 @@ function UserUpdate({ authToken }) {
     formData.append("description", description);
     try {
       const response = await axios.post(
-        `https://ryan-minted.herokuapp.com/user/update`,
+        `${process.env.REACT_APP_API_URL}user/update`,
         formData,
 
         {

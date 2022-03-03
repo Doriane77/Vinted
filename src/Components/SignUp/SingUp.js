@@ -35,7 +35,6 @@ function SignUp({ setFloatSignUp, floatConnect, setFloatConnect }) {
   const handleSubmit = async (event) => {
     event.preventDefault();
     setFloatSignUp(false);
-    // navigate("../my-user-account");
 
     const formData = new FormData();
 
@@ -44,11 +43,10 @@ function SignUp({ setFloatSignUp, floatConnect, setFloatConnect }) {
     formData.append("username", userName);
     formData.append("phone", phone);
     formData.append("pictureup", picture);
-    // console.log(formData);
 
     try {
       const response = await axios.post(
-        "https://ryan-minted.herokuapp.com/user/signup",
+        `${process.env.REACT_APP_API_URL}user/signup`,
         formData
       );
       console.log(response);
