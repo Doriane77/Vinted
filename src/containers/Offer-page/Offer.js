@@ -1,6 +1,5 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
-import Header from "../../Components/Header/Header";
 import { useParams } from "react-router-dom";
 import { useNavigate } from "react-router";
 
@@ -14,7 +13,9 @@ function Offer({
   setProduct,
 }) {
   const [isLoading, setIsLoading] = useState(true);
+
   const navigate = useNavigate();
+
   function handleBuyClik() {
     if (authToken) {
       navigate(`/offer/buy/${id}`);
@@ -22,6 +23,7 @@ function Offer({
       setFloatConnect(!floatConnect);
     }
   }
+
   const fetchData = async () => {
     const response = await axios.get(
       `${process.env.REACT_APP_API_URL}offer/${id}`
@@ -32,6 +34,7 @@ function Offer({
   useEffect(() => {
     fetchData();
   }, []);
+
   const { id } = useParams();
   return (
     <div className="Offer">

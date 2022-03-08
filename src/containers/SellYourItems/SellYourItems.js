@@ -1,5 +1,5 @@
 import axios from "axios";
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import { useNavigate } from "react-router";
 import { toast } from "react-toastify";
 
@@ -19,17 +19,7 @@ function SellYourItems({ authToken, user }) {
 
   const handleSubmit = async (event) => {
     event.preventDefault();
-    // navigate("./");
-    console.log({
-      title,
-      description,
-      price,
-      brand,
-      size,
-      condition,
-      color,
-      city,
-    });
+
     const formData = new FormData();
 
     formData.append("title", title);
@@ -111,7 +101,7 @@ function SellYourItems({ authToken, user }) {
         <h1>Mettre en vente un nouvelle article</h1>
         <div className={pictureURL ? "publish-page" : "publish"}>
           <div className={pictureURL ? "SellYourItem-img" : "none"}>
-            <img src={pictureURL} />
+            <img src={pictureURL} alt={title} />
           </div>
           <form onSubmit={handleSubmit}>
             <input

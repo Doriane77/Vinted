@@ -1,12 +1,15 @@
 import React, { useEffect } from "react";
-import LogoVinted from "./Vinted_logo.png";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { Link, useNavigate } from "react-router-dom";
 import { useState } from "react";
+import { toast } from "react-toastify";
+
 import axios from "axios";
+
 import Login from "../../Components/Login/Login";
 import SignUp from "../../Components/SignUp/SingUp";
-import { toast } from "react-toastify";
+
+import LogoVinted from "./Vinted_logo.png";
 
 function Header({
   authToken,
@@ -21,13 +24,14 @@ function Header({
   const [float, setFloat] = useState(false);
 
   let navigate = useNavigate();
+
   function handleClickSignUp() {
     setFloatSignUp(!floatSignUp);
     setFloatConnect(false);
   }
   function handleClickLogin() {
-    setFloatSignUp(false);
     setFloatConnect(!floatConnect);
+    setFloatSignUp(false);
   }
   function handleClikSignOut() {
     setauthToken("");

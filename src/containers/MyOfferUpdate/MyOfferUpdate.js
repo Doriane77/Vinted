@@ -38,7 +38,7 @@ function OfferUpdate({ authToken }) {
   }, []);
 
   const handleSubmit = async (event) => {
-    // event.preventDefault();
+    event.preventDefault();
     nagivate(`/my-user-account/${data.user._id}`);
     const formData = new FormData();
     formData.append("title", title);
@@ -115,7 +115,7 @@ function OfferUpdate({ authToken }) {
         <h1>Modifier mon offre</h1>
         <div className="offer-update-col">
           <div className={pictureURL ? "offer-update-picture-url" : "none"}>
-            <img src={pictureURL} />
+            <img src={pictureURL} alt={title} />
           </div>
           <form>
             <input

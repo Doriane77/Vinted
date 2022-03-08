@@ -2,9 +2,9 @@ import "./App.css";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import { useEffect, useState } from "react";
 
+import Header from "./Components/Header/Header";
 import Home from "./containers/Home-page/Home";
 import Offer from "./containers/Offer-page/Offer";
-import Header from "./Components/Header/Header";
 import MyUserAccount from "./containers/MyUserAccount/MyUserAccount";
 import MyOffer from "./containers/MyOffer/MyOffer";
 import SellYourItems from "./containers/SellYourItems/SellYourItems";
@@ -32,9 +32,10 @@ function App() {
 
   const [search, setSearch] = useState("");
 
-  const [userData, setUserData] = useState({});
   const [floatConnect, setFloatConnect] = useState(false);
   const [floatSignUp, setFloatSignUp] = useState(false);
+
+  const [userData, setUserData] = useState({});
 
   const [product, setProduct] = useState({});
 

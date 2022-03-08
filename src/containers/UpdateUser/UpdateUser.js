@@ -1,5 +1,5 @@
 import axios from "axios";
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import { useNavigate, useParams } from "react-router";
 
 function UserUpdate({ authToken }) {
@@ -12,6 +12,7 @@ function UserUpdate({ authToken }) {
   const handleSubmit = async () => {
     // window.location.reload();
     navigate(`/my-user-account/${id}`);
+
     const formData = new FormData();
 
     formData.append("picture", picture);

@@ -2,7 +2,7 @@ import React from "react";
 import { useState } from "react";
 import { CardElement, useElements, useStripe } from "@stripe/react-stripe-js";
 import axios from "axios";
-import { useLocation, useParams } from "react-router";
+import { useParams } from "react-router";
 import { toast } from "react-toastify";
 
 function PaymentPage({ authToken, product, setProduct }) {

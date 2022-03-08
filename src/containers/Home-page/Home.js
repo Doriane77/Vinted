@@ -1,7 +1,9 @@
 import React from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { useState, useEffect } from "react";
+
 import axios from "axios";
+
 import LoadingPage from "../../Components/Loading-page/Loading-page";
 import homePicture from "../../images/home-picture.jpg";
 import OfferLimit from "../../Components/Offer-Limit/Offer-Limit";
