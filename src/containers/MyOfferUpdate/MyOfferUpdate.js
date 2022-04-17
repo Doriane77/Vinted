@@ -18,28 +18,28 @@ function OfferUpdate({ authToken }) {
   const [pictureURL, setPictureURL] = useState("");
   const nagivate = useNavigate();
 
-  const fetchData = async () => {
-    try {
-      const response = await axios.post(
-        `${process.env.REACT_APP_API_URL}profile`,
-        {},
-        {
-          headers: { Authorization: `Bearer ${authToken}` },
-        }
-      );
-      setData(response.data);
-    } catch (error) {
-      console.log(error.response);
-    }
-  };
-
   useEffect(() => {
+    const fetchData = async () => {
+      try {
+        const response = await axios.post(
+          `${process.env.REACT_APP_API_URL}user/profile`,
+          {},
+          {
+            headers: { Authorization: `Bearer ${authToken}` },
+          }
+        );
+        setData(response.data);
+      } catch (error) {
+        console.log(error.response);
+      }
+    };
     fetchData();
-  }, []);
+  }, [authToken]);
 
   const handleSubmit = async (event) => {
     event.preventDefault();
     nagivate(`/my-user-account/${data.user._id}`);
+
     const formData = new FormData();
     formData.append("title", title);
     formData.append("description", description);
@@ -57,6 +57,7 @@ function OfferUpdate({ authToken }) {
         formData,
         { headers: { Authorization: `Bearer ${authToken}` } }
       );
+      console.log(response);
     } catch (error) {
       console.log(error.response);
     }
@@ -69,6 +70,7 @@ function OfferUpdate({ authToken }) {
         boxPicture,
         { headers: { Authorization: `Bearer ${authToken}` } }
       );
+      console.log(response);
     } catch (error) {
       console.log(error.response);
     }

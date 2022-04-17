@@ -47,7 +47,7 @@ function UserUpdate({ authToken }) {
         <h1>Modifier mon profile</h1>
         <div className="user-update-page">
           <div className={pictureURL ? "update-user-picture-url" : "none"}>
-            <img src={pictureURL} />
+            <img src={pictureURL} alt={description} />
           </div>
           <form>
             <div className="user-update-file">

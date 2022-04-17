@@ -41,23 +41,23 @@ function App() {
 
   const stripePromise = loadStripe(`${process.env.REACT_APP_STRIPE_KEY}`);
 
-  const fetchData = async () => {
-    if (authToken) {
-      try {
-        const response = await axios.post(
-          `${process.env.REACT_APP_API_URL}user/profile`,
-          {},
-          {
-            headers: { Authorization: `Bearer ${authToken}` },
-          }
-        );
-        setUserData(response.data);
-      } catch (error) {
-        console.log(error.response);
-      }
-    }
-  };
   useEffect(() => {
+    const fetchData = async () => {
+      if (authToken) {
+        try {
+          const response = await axios.post(
+            `${process.env.REACT_APP_API_URL}user/profile`,
+            {},
+            {
+              headers: { Authorization: `Bearer ${authToken}` },
+            }
+          );
+          setUserData(response.data);
+        } catch (error) {
+          console.log(error.response);
+        }
+      }
+    };
     fetchData();
   }, [kookie, authToken]);
 

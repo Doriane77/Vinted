@@ -11,11 +11,13 @@ function PaymentPage({ authToken, product, setProduct }) {
 
   const { id } = useParams();
 
-  const [buyerProtect, setBuyerProtect] = useState(0.8);
-  const [cost, setCost] = useState(1.8);
+  // const [buyerProtect, setBuyerProtect] = useState(0.8);
+  const buyerProtect = 0.8;
+  // const [cost, setCost] = useState(1.8);
+  const cost = 1.8;
   const [completed, setCompleted] = useState(false);
 
-  const [errorMessge, setErrorMessage] = useState("");
+  const [errorMessage, setErrorMessage] = useState("");
 
   const total = cost + buyerProtect + product.product_price;
 
@@ -29,7 +31,7 @@ function PaymentPage({ authToken, product, setProduct }) {
 
     if (!stripeResponse.token) {
       setErrorMessage(stripeResponse.error.message);
-      toast.error(stripeResponse.error.message, {
+      toast.error(errorMessage, {
         position: "top-center",
         autoClose: 3000,
         hideProgressBar: false,

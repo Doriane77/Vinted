@@ -1,34 +1,33 @@
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import axios from "axios";
 import React, { useEffect, useState } from "react";
-import { useNavigate, useParams } from "react-router";
+import { useNavigate } from "react-router";
 import MyOffer from "../MyOffer/MyOffer";
 
 function MyUserAccount({ authToken }) {
-  const { id } = useParams();
+  // const { id } = useParams();
   const [data, setData] = useState({});
   const [isLoading, setIsLoading] = useState(true);
   const [seeOffer, setSeeOffer] = useState(false);
 
-  const fetchData = async () => {
-    try {
-      const response = await axios.post(
-        `${process.env.REACT_APP_API_URL}user/profile`,
-        {},
-        {
-          headers: { Authorization: `Bearer ${authToken}` },
-        }
-      );
-      setData(response.data);
-      setIsLoading(false);
-    } catch (error) {
-      console.log(error.response);
-    }
-  };
-
   useEffect(() => {
+    const fetchData = async () => {
+      try {
+        const response = await axios.post(
+          `${process.env.REACT_APP_API_URL}user/profile`,
+          {},
+          {
+            headers: { Authorization: `Bearer ${authToken}` },
+          }
+        );
+        setData(response.data);
+        setIsLoading(false);
+      } catch (error) {
+        console.log(error.response);
+      }
+    };
     fetchData();
-  }, []);
+  }, [authToken]);
 
   let navigate = useNavigate();
   function handleMyOfferClick() {

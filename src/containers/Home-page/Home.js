@@ -7,9 +7,10 @@ import axios from "axios";
 import LoadingPage from "../../Components/Loading-page/Loading-page";
 import homePicture from "../../images/home-picture.jpg";
 import OfferLimit from "../../Components/Offer-Limit/Offer-Limit";
+import Slider from "../../Components/RangeSlider/Slider";
 
 function Home({ search, authToken, user, floatConnect, setFloatConnect }) {
-  const [sale, setSale] = useState();
+  // const [sale, setSale] = useState();
   const [data, setData] = useState({});
   const [isLoading, setIsLoading] = useState(true);
   const [limit, setLimit] = useState(50);
@@ -17,14 +18,14 @@ function Home({ search, authToken, user, floatConnect, setFloatConnect }) {
   const [priceMin, setPriceMin] = useState(0);
   const [priceMax, setPriceMax] = useState(1000);
 
-  const fetchData = async () => {
-    const response = await axios.get(
-      `${process.env.REACT_APP_API_URL}offers?page=${page}&limit=${limit}&title=${search}`
-    );
-    setData(response.data);
-    setIsLoading(false);
-  };
   useEffect(() => {
+    const fetchData = async () => {
+      const response = await axios.get(
+        `${process.env.REACT_APP_API_URL}offers?page=${page}&limit=${limit}&title=${search}`
+      );
+      setData(response.data);
+      setIsLoading(false);
+    };
     const showSomething = () => {
       fetchData();
     };
@@ -54,7 +55,7 @@ function Home({ search, authToken, user, floatConnect, setFloatConnect }) {
             </div>
             <div className="box-main-picture">
               <div className="main-picture">
-                <img src={homePicture} alt="image acceuil du site vinted" />
+                <img src={homePicture} alt="acceuil du site vinted" />
                 <div className="effet">
                   <img
                     src="https://lereacteur-vinted.netlify.app/static/media/tear.42d6cec6.svg"
@@ -71,14 +72,16 @@ function Home({ search, authToken, user, floatConnect, setFloatConnect }) {
             page={page}
             setPage={setPage}
           />
-          <div className="box-range">
-            <p>min {priceMin}</p>
-            <input type="range" min="0" max="1000" />
-            <p>max {priceMax}</p>
-          </div>
+
+          <Slider
+            priceMax={priceMax}
+            priceMin={priceMin}
+            setPriceMax={setPriceMax}
+            setPriceMin={setPriceMin}
+          />
           <div className="box-announce">
             {data.offers.map((elem, index) => {
-              console.log(elem);
+              // console.log(elem);
               return (
                 <Link
                   to={`/offer/${elem._id}`}

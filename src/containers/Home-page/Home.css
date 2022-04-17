@@ -51,11 +51,7 @@
   border: #2baeb7 1px solid;
   border-radius: 5px;
 }
-.box-range {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
+
 .box-announce {
   display: flex;
   width: 78%;

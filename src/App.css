@@ -10,6 +10,7 @@
 @import "./containers/UpdateUser/UpdateUser.css";
 @import "./containers/MyOfferUpdate/MyOfferUpdate.css";
 @import "./containers/Payment/Payment.css";
+@import "./Components/RangeSlider/Slider.css";
 body {
   background-color: #f1efef;
   /* background-color: lightgreen; */
