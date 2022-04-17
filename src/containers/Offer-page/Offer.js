@@ -12,6 +12,7 @@ function Offer({
   product,
   setProduct,
 }) {
+  const { id } = useParams();
   const [isLoading, setIsLoading] = useState(true);
 
   const navigate = useNavigate();
@@ -24,18 +25,17 @@ function Offer({
     }
   }
 
-  const fetchData = async () => {
-    const response = await axios.get(
-      `${process.env.REACT_APP_API_URL}offer/${id}`
-    );
-    setProduct(response.data);
-    setIsLoading(false);
-  };
   useEffect(() => {
+    const fetchData = async () => {
+      const response = await axios.get(
+        `${process.env.REACT_APP_API_URL}offer/${id}`
+      );
+      setProduct(response.data);
+      setIsLoading(false);
+    };
     fetchData();
-  }, []);
+  }, [id, setProduct]);
 
-  const { id } = useParams();
   return (
     <div className="Offer">
       {isLoading ? (
