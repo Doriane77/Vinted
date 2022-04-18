@@ -31,15 +31,6 @@ function Slider({ priceMax, priceMin, setPriceMax, setPriceMin }) {
           onChange={handlePriceMaxChange}
         />
       </span>
-
-      {/* <input
-        type="range"
-        min="0"
-        max="1000"
-        value={priceMin}
-        onChange={handlePriceMinChange}
-      /> */}
-
       <p>max {priceMax}</p>
     </div>
   );
