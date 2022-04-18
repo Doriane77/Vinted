@@ -1,5 +1,25 @@
 .Slider {
     display: flex;
+    height: 30px;
     align-items: center;
     justify-content: center;
+    /* background-color: peru; */
   }
+  
+.Slider p {
+  margin: 0px 10px 5px 10px;
+}
+.Slider input {
+  /* background-color: red; */
+  appearance: none;
+  width: 200px;
+  margin: 0;
+  border: 0;
+  border-radius: 1px;
+  background: linear-gradient(grey, grey) no-repeat center;
+  background-size: 100% 2px;
+
+
+}
+
+

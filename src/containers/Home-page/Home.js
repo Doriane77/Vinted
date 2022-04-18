@@ -16,12 +16,12 @@ function Home({ search, authToken, user, floatConnect, setFloatConnect }) {
   const [limit, setLimit] = useState(50);
   const [page, setPage] = useState(1);
   const [priceMin, setPriceMin] = useState(0);
-  const [priceMax, setPriceMax] = useState(1000);
+  const [priceMax, setPriceMax] = useState(2000);
 
   useEffect(() => {
     const fetchData = async () => {
       const response = await axios.get(
-        `${process.env.REACT_APP_API_URL}offers?page=${page}&limit=${limit}&title=${search}`
+        `${process.env.REACT_APP_API_URL}offers?page=${page}&limit=${limit}&title=${search}&priceMin=${priceMin}&priceMax=${priceMax}`
       );
       setData(response.data);
       setIsLoading(false);
@@ -31,7 +31,7 @@ function Home({ search, authToken, user, floatConnect, setFloatConnect }) {
     };
     setTimeout(showSomething, 1000);
     // showSomething();
-  }, [page, limit, search]);
+  }, [page, limit, search, priceMin, priceMax]);
   const navigate = useNavigate();
   function handleSaleClik() {
     if (authToken) {
@@ -80,7 +80,7 @@ function Home({ search, authToken, user, floatConnect, setFloatConnect }) {
             setPriceMin={setPriceMin}
           />
           <div className="box-announce">
-            {data.offers.map((elem, index) => {
+            {data.offers.map((elem) => {
               // console.log(elem);
               return (
                 <Link
